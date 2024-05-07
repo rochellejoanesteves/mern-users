@@ -6,15 +6,32 @@ import useHttpGet from "../../hooks/useHttpGet";
 
 const Members = () => {
   const { data, loading, error } = useHttpGet("/api/users/getUsers");
+  const { data: signOut } = useHttpGet("/api/auth/signout");
   const navigate = useNavigate();
 
   const handleClick = () => {
     navigate("/create-user");
   };
 
+  const handleSignOut = async () => {
+    const res = await signOut;
+    if (!!res) {
+      navigate("/");
+    }
+  };
+
   return (
     <div>
-      <ActionButton title="Add" onClick={handleClick} />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginBottom: "10px",
+        }}
+      >
+        <ActionButton title="Add" onClick={handleClick} />
+        <ActionButton title="Sign Out" onClick={handleSignOut} />
+      </div>
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
