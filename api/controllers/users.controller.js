@@ -12,11 +12,20 @@ export const createUser = async (req, res, next) => {
       lastName,
       emailAddress,
       role,
-      password: hashedPassword
+      password: hashedPassword,
     });
 
-    console.log(createUser)
+    console.log(createUser);
     return res.status(201).json(createUser);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getUsers = async (req, res, next) => {
+  try {
+    const users = await Users.find({});
+    return res.status(200).json(users);
   } catch (error) {
     next(error);
   }
