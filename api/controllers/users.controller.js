@@ -30,3 +30,21 @@ export const getUsers = async (req, res, next) => {
     next(error);
   }
 };
+
+export const updateUser = async (req, res, next) => {
+  const user = await Users.findById(req.params.id);
+
+  if (!user) return next(errorHandler(404, "User not found!"));
+
+
+  try {
+    const updateUser = await Users.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
+    res.status(200).json(updateUser);
+  } catch (error) {
+    next(error);
+  }
+};
