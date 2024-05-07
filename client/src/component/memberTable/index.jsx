@@ -1,8 +1,16 @@
 import React from "react";
 import { Table } from "antd";
 import ActionButton from "../button";
+import { useNavigate } from "react-router-dom";
 
 const MemberTable = ({ data }) => {
+  const userData = data?.map((item, index) => ({
+    ...item,
+    key: index,
+  }));
+
+  const navigate = useNavigate();
+
   const handleDelete = async (currentUser) => {
     try {
       const res = await fetch(`/api/users/delete/${currentUser._id}`, {
@@ -16,6 +24,10 @@ const MemberTable = ({ data }) => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleUpdate = (currentUser) => {
+    navigate(`/update-user/${currentUser._id}`);
   };
   const columns = [
     {
@@ -56,7 +68,7 @@ const MemberTable = ({ data }) => {
             width: "150px",
           }}
         >
-          <ActionButton title="Edit" />
+          <ActionButton title="Edit" onClick={() => handleUpdate(data)} />
           <ActionButton title="Delete" onClick={() => handleDelete(data)} />
         </div>
       ),
@@ -64,7 +76,7 @@ const MemberTable = ({ data }) => {
   ];
   return (
     <div>
-      <Table columns={columns} dataSource={data} />
+      <Table columns={columns} dataSource={userData} />
     </div>
   );
 };
