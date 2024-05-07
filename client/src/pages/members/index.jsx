@@ -13,10 +13,15 @@ const Members = () => {
   };
 
   const handleSignOut = async () => {
-    // const res = await signOut;
-    // if (!!res) {
-    //   navigate("/");
-    // }
+    try {
+      const res = await fetch("/api/auth/signout");
+      const data = await res.json();
+      if (!!data) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
