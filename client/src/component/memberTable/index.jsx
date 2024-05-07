@@ -3,6 +3,20 @@ import { Table } from "antd";
 import ActionButton from "../button";
 
 const MemberTable = ({ data }) => {
+  const handleDelete = async (currentUser) => {
+    try {
+      const res = await fetch(`/api/users/delete/${currentUser._id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+
+      if (!!data) {
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const columns = [
     {
       title: "Firs Name",
@@ -33,15 +47,17 @@ const MemberTable = ({ data }) => {
       title: "Action",
       dataIndex: "",
       key: "x",
-      render: () => (
-        <div style={{
+      render: (data) => (
+        <div
+          style={{
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
-            width: "150px"
-        }}>
-            <ActionButton title="Edit" />
-            <ActionButton title="Delete" />
+            width: "150px",
+          }}
+        >
+          <ActionButton title="Edit" />
+          <ActionButton title="Delete" onClick={() => handleDelete(data)} />
         </div>
       ),
     },
