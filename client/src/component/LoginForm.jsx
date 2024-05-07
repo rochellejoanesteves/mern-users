@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Form, Input } from "antd";
 import style from "./loginForm.module.scss";
 
-const LoginForm = ({ title, linkTitle, pathLocation }) => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+const LoginForm = ({ title, linkTitle, pathLocation, onFinish }) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };

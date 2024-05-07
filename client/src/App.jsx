@@ -1,28 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginForm from "./component/LoginForm";
 import style from "./styles.module.scss";
+import Home from "./pages/home";
+import SignUp from "./pages/sign-up";
 
 function App() {
   return (
     <div className={style.appConatiner}>
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <LoginForm title="Sign In" linkTitle="Sign Up" pathLocation="sign-up" />
-            }
-          />
-          <Route
-            path="/sign-up"
-            element={
-              <LoginForm
-                title="Sign Up"
-                linkTitle="Sign In"
-                pathLocation="/"
-              />
-            }
-          />
+          <Route path="/" element={<Home />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </div>
