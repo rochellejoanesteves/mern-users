@@ -1,4 +1,4 @@
-import User from "../models/user.model.js";
+import Account from "../models/account.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
@@ -8,7 +8,7 @@ export const signup = async (req, res, next) => {
 
   const hashedPassword = await bcryptjs.hashSync(password, 12);
 
-  const newUser = new User({
+  const newUser = new Account({
     username,
     password: hashedPassword,
   });
@@ -25,7 +25,7 @@ export const signin = async (req, res, next) => {
   const { username, password } = req.body;
 
   try {
-    const validUser = await User.findOne({ username });
+    const validUser = await Account.findOne({ username });
     if (!validUser) return next(errorHandler("404", "User not found!"));
 
     const validPassword = bcryptjs.compareSync(password, validUser.password);
