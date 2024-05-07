@@ -6,7 +6,6 @@ import useHttpGet from "../../hooks/useHttpGet";
 
 const Members = () => {
   const { data, loading, error } = useHttpGet("/api/users/getUsers");
-  const { data: signOut } = useHttpGet("/api/auth/signout");
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -14,10 +13,10 @@ const Members = () => {
   };
 
   const handleSignOut = async () => {
-    const res = await signOut;
-    if (!!res) {
-      navigate("/");
-    }
+    // const res = await signOut;
+    // if (!!res) {
+    //   navigate("/");
+    // }
   };
 
   return (
