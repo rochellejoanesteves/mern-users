@@ -32,6 +32,7 @@ Instructions on how to run the solution:
 - Delete a user with the given ID: DELETE http://localhost:3000/api/users/update/:id
 
 **OUTPUT**
-<img width="548" alt="image" src="https://github.com/rochellejoanesteves/mern-users/assets/128266520/e231649f-07ce-41ee-8872-6c15297f55af">
+
+<img width="793" alt="image" src="https://github.com/rochellejoanesteves/mern-users/assets/128266520/53c198a1-fc43-40d9-a1a7-852ee3fcc251">
 
 <img width="923" alt="image" src="https://github.com/rochellejoanesteves/mern-users/assets/128266520/55c217a6-7abc-4da1-8cd7-1f820f9da4d5">
