@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../../component/LoginForm";
+import LoginForm from "../../component/loginForm";
 import useHttpPost from "../../hooks/useHttpPost";
 
 const Home = () => {
