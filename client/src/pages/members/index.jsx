@@ -14,11 +14,10 @@ const Members = () => {
 
   const handleSignOut = async () => {
     try {
-      const res = await fetch("/api/auth/signout");
-      const data = await res.json();
-      if (!!data) {
-        navigate("/");
-      }
+      await fetch("/api/auth/signout");
+
+      localStorage.clear();
+      navigate("/");
     } catch (error) {
       console.log(error);
     }

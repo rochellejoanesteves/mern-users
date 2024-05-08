@@ -8,9 +8,14 @@ const Home = () => {
   const navigate = useNavigate()
 
   const handleSignIn = async (values) => {
-    const data = await postData(values);
-    if (!!data) {
+    try {
+      const data = await postData(values);
+    if (data?._id) {
       navigate("/members-page")
+      localStorage.setItem("USER_ACCOUNT", JSON.stringify(data))
+    }
+    } catch (error) {
+      console.log(error)
     }
   };
   return (

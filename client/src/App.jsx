@@ -5,19 +5,14 @@ import SignUp from "./pages/sign-up";
 import Members from "./pages/members";
 import CreatUser from "./pages/createUser";
 import UpdateUser from "./pages/updateUser";
+import Router from "../routes";
 
 function App() {
   return (
     <div className={style.appConatiner}>
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sign-up" element={<SignUp />} />
-
-          <Route path="/members-page" element={<Members />} />
-          <Route path="/create-user" element={<CreatUser />} />
-          <Route path="/update-user/:id" element={<UpdateUser />} />
-        </Routes>
+      <Router />
+      
       </BrowserRouter>
     </div>
   );

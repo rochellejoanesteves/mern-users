@@ -13,7 +13,7 @@ const UpdateUser = () => {
 
   const handleUpdate = async (value) => {
     const data = await postData(value);
-    if (!!data) {
+    if (data?._id) {
       navigate("/members-page");
     }
   };

@@ -7,12 +7,17 @@ const CreatUser = () => {
   const { postData, loading, error } = useHttpPost("/api/users/create");
 
   const navigate = useNavigate();
+
   sessionStorage.clear();
 
   const handleCreate = async (value) => {
-    const data = await postData(value);
-    if (!!data) {
-      navigate("/members-page");
+    try {
+      const data = await postData(value);
+      if (data?._id) {
+        navigate("/members-page");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (

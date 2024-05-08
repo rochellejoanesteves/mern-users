@@ -10,9 +10,13 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   const handleSignUp = async (values) => {
-    const data = await postData(values);
-    if (data !== undefined) {
-      navigate("/");
+    try {
+      const data = await postData(values);
+      if (data !== undefined) {
+        navigate("/");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
   return (
