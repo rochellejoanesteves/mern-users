@@ -33,13 +33,19 @@ export const getUsers = async (req, res, next) => {
 
 export const updateUser = async (req, res, next) => {
   const user = await Users.findById(req.params.id);
+  const { firstName, lastName, emailAddress, role, password } = req.body;
+  const hashedPassword = await bcryptjs.hashSync(password, 12);
 
   if (!user) return next(errorHandler(404, "User not found!"));
 
   try {
-    const updateUser = await Users.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const updateUser = await Users.findByIdAndUpdate(
+      req.params.id,
+      { firstName, lastName, emailAddress, role, password: hashedPassword },
+      {
+        new: true,
+      }
+    );
     res.status(200).json(updateUser);
   } catch (error) {
     next(error);

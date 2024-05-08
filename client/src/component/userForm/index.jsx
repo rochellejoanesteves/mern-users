@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Form, Input } from "antd";
 
 const UserForm = ({ title, onFinish }) => {
+  const initialValue = sessionStorage.getItem("user")
+
   return (
     <div>
       <h1>{`${title} User`}</h1>
@@ -16,6 +18,7 @@ const UserForm = ({ title, onFinish }) => {
           flex: 1,
         }}
         onFinish={onFinish}
+        initialValues={JSON.parse(initialValue)}
       >
         <Form.Item
           label="First Name"

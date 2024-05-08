@@ -28,6 +28,7 @@ const MemberTable = ({ data }) => {
 
   const handleUpdate = (currentUser) => {
     navigate(`/update-user/${currentUser._id}`);
+    sessionStorage.setItem("user", JSON.stringify(currentUser))
   };
   const columns = [
     {
